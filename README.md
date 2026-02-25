@@ -21,5 +21,4 @@ npm run dev
 
 
 git push -u origin main
-```
-上传成功后，在您的 GitHub 页面刷新一下，就可以看到全部项目代码了！
+
