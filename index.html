@@ -1,13 +1,69 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>resume-editor</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="editor-panel">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Resume Studio</p>
+          <h1>可编辑简历项目</h1>
+        </div>
+        <div class="toolbar">
+          <button id="reset-btn" class="ghost-btn" type="button">重置示例</button>
+          <button id="import-btn" class="ghost-btn" type="button">导入 JSON</button>
+          <button id="export-btn" class="primary-btn" type="button">导出 JSON</button>
+        </div>
+      </div>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h2>基础信息</h2>
+            <p>姓名、职位、联系方式等固定字段</p>
+          </div>
+        </div>
+        <div id="basics-form" class="form-grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h2>自定义模块</h2>
+            <p>可新增模块、自定义字段、调整顺序</p>
+          </div>
+          <button id="add-module-btn" class="primary-btn" type="button">新增模块</button>
+        </div>
+        <div id="modules-container" class="module-list"></div>
+      </section>
+    </aside>
+
+    <main class="preview-panel">
+      <div class="preview-header">
+        <div>
+          <p class="eyebrow">Live Preview</p>
+          <h2>简历预览</h2>
+        </div>
+        <button id="print-btn" class="ghost-btn" type="button">打印 / 导出 PDF</button>
+      </div>
+      <article id="resume-preview" class="resume-sheet"></article>
+    </main>
+  </div>
+
+  <template id="module-template">
+    <section class="module-card"></section>
+  </template>
+
+  <input id="import-input" type="file" accept="application/json" hidden>
+
+  <script src="./app.js"></script>
+</body>
 </html>
